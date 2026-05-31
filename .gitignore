@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cloudinary onboarding (contains credentials)
+cloudinary-test.mjs
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
