@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Fonts ─────────────────────────────────────────────────────────────── */
+  --font-display: var(--font-cormorant);   /* headings — swap here to change */
+  --font-body: var(--font-space-grotesk);  /* UI/body — swap here to change  */
+
+  /* ── Colors ─────────────────────────────────────────────────────────────── */
+  --color-bg:         #0B2B26;
+  --color-bg-raised:  #163832;
+  --color-text:       #F0ECE4;
+  --color-text-muted: #9AADA8;
+  --color-accent:     #C8A96E;
+  --color-border:     #1E4039;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: #0B2B26;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
