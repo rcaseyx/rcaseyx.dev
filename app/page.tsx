@@ -1,9 +1,12 @@
 export default function Home() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-24">
-      <h1 className="font-[family-name:var(--font-display)] text-7xl font-light text-[var(--color-text)]">
-        Ryan Casey
-      </h1>
-    </div>
+    <section className="max-w-6xl mx-auto px-6 flex flex-col justify-center min-h-[80vh]">
+      <p className="font-[family-name:var(--font-display)] text-6xl sm:text-7xl lg:text-8xl font-light text-[var(--color-text)] leading-tight max-w-4xl">
+        Software engineer. Drummer. Photographer. Occasional shirt guy.
+      </p>
+      <p className="mt-8 text-sm uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+        Based in East Atlanta.
+      </p>
+    </section>
   );
 }
