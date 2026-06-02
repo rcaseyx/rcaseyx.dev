@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type { CloudinaryImage } from "@/lib/cloudinary";
 
 const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
@@ -18,13 +18,34 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function GalleryItem({ img, onClick }: { img: CloudinaryImage; onClick: () => void }) {
+function GalleryItem({ img, index, onClick }: { img: CloudinaryImage; index: number; onClick: () => void }) {
   const [loaded, setLoaded] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const delay = Math.min(index % 3 * 80, 240);
 
   return (
     <button
+      ref={ref}
       onClick={onClick}
       className="block w-full mb-4 overflow-hidden cursor-pointer focus:outline-none group"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease ${delay}ms`,
+      }}
     >
       <div className="bg-[var(--color-bg-raised)] w-full" style={{ aspectRatio: img.width / img.height }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -107,6 +128,7 @@ export default function Gallery({ images }: { images: CloudinaryImage[] }) {
           <GalleryItem
             key={img.public_id}
             img={img}
+            index={i}
             onClick={() => { setDirection("open"); setActiveIndex(i); }}
           />
         ))}

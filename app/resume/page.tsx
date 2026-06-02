@@ -116,6 +116,14 @@ export default function Resume() {
           >
             GitHub
           </a>
+          <a
+            href="https://rcaseyx.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--color-text)] transition-colors"
+          >
+            rcaseyx.dev
+          </a>
         </div>
         <p className="mt-5 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-2xl">
           Senior frontend/fullstack engineer with 6+ years of experience. Specializes in React/TypeScript, shipping polished products at scale, and building tooling that engineering teams adopt.
