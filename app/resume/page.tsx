@@ -11,12 +11,14 @@ const experience = [
     role: "Senior Software Engineer",
     period: "Nov 2022 – Present",
     bullets: [
-      "Shipped across six areas of mailchimp.com over 4+ years — marketing campaigns, store and pricing, sign-up, developer docs, brand content, and homepage personalization",
-      "Led engineering on mailchimp.com's first personalization system for prospective visitors — captures preferences on first visit and immediately updates homepage content client-side, loading only what each visitor actually sees",
-      "Ran sprint ceremonies; designed and shipped 15 AI-powered automation tools integrating Jira, GitHub, Slack, and Google Calendar — 5 generalized for multi-team use and merged into Mailchimp's shared cross-team AI-tools repo",
-      "Led a 14-module homepage redesign — worked with marketing, product, and design to phase overlapping A/B tests so the data stayed clean without slowing launch",
-      "On-call rotation for mailchimp.com — triage and response for site-impacting incidents",
-      "Mentored teammates on React patterns, accessibility, and PR sizing",
+      "Shipped across six product surfaces on mailchimp.com — sign-up and activation, marketing campaigns, store and pricing, developer docs, brand content, and homepage personalization",
+      "Architected mailchimp.com's first real-time personalization system — captured intent signals on first visit and immediately rendered personalized content client-side, loading only what each visitor actually sees; deployed to production with performance-aware delivery",
+      "Led a 14-module homepage redesign — worked with product, design, and data partners to sequence overlapping A/B tests, instrumenting each module via GTM and GA4 so variant signals stayed isolated and results read out cleanly",
+      "Led 3-engineer team that built an interactive product demo React module — guided users through creating a live email campaign from initial design to launch, driving $280K+ incremental annual booking revenue",
+      "Owned features from technical design through instrumented experimentation and launch — scoped as stacked PR chains for independent review at each stage",
+      "Identified workflow bottlenecks and shipped 15 AI-powered automation tools spanning Jira, GitHub, Slack, and Google Calendar — led a multi-PR initiative to abstract 5 as configurable, team-agnostic tools and ship them into Mailchimp's shared org-installer for cross-team adoption",
+      "Mentored teammates on React patterns, accessibility, and PR sizing; ran sprint ceremonies covering planning, refinement, and capacity",
+      "On-call rotation for mailchimp.com — triaged and responded to site-impacting incidents; contributed to weekly operational reviews covering performance metrics and uptime",
     ],
   },
   {
@@ -26,7 +28,6 @@ const experience = [
     period: "May 2020 – Nov 2022",
     note: "Embedded consultant on Intuit Mailchimp's Dotcom team; hired FTE Nov 2022",
     bullets: [
-      "Led 3-engineer team that built an interactive product demo React module — $280K+ in incremental annual booking revenue",
       "Rebuilt major portions of mailchimp.com and Mailchimp Presents using React, PHP, and Contentful",
       "Onboarding lead for new contractors and incoming Mailchimp FTEs",
       "Automated CMS workflows with custom Contentful tooling",
@@ -55,25 +56,25 @@ const skills = [
   { label: "Languages & Frameworks", items: "TypeScript · JavaScript (ES6+) · React · Next.js · PHP · Node.js · LESS/CSS · GraphQL" },
   { label: "Testing", items: "Jest · PHPUnit" },
   { label: "CMS & Platforms", items: "Contentful · GitHub Enterprise · Jira" },
-  { label: "Experimentation", items: "Optimizely · feature-flag rollout · A/B test analytics" },
+  { label: "Experimentation", items: "Optimizely · feature-flag rollout · A/B test instrumentation" },
   { label: "Practices", items: "Accessibility (WCAG) · Agile/Scrum · AI-assisted engineering" },
 ];
 
 const projects = [
   {
-    name: "AI Engineering Workflow",
-    period: "2024–present",
-    description: "Architected 15 Claude Code skills automating sprint ceremonies across Jira, GitHub, Slack, and Google Calendar; 5 generalized for multi-team use and merged into Intuit's shared cross-team package.",
+    name: "Homepage Personalization",
+    period: "Mailchimp, late 2025–present",
+    description: "Architected mailchimp.com's first real-time personalization system — captures intent signals on first visit and immediately renders personalized content client-side, loading only what each visitor actually sees with performance-aware delivery.",
   },
   {
     name: "Interactive Product Demo",
-    period: "Mailchimp, 2021",
-    description: "Led a 3-engineer team building a React module that guides users through creating a live email campaign. $280K+ incremental annual booking revenue.",
+    period: "Mailchimp, 2024",
+    description: "Led a 3-engineer team building a React module that guides users through creating a live email campaign end to end. $280K+ incremental annual booking revenue.",
   },
   {
-    name: "Homepage Personalization",
-    period: "Mailchimp, 2024–present",
-    description: "Built mailchimp.com's first personalization system for prospective visitors — captures preferences on first visit and drives real-time homepage updates client-side, with performance-aware delivery.",
+    name: "AI Engineering Workflow",
+    period: "2026",
+    description: "Identified workflow bottlenecks and shipped 15 AI-powered tools spanning Jira, GitHub, Slack, and Google Calendar; led a multi-PR initiative to abstract 5 as configurable, team-agnostic tools and ship them into Mailchimp's shared org-installer for cross-team adoption.",
   },
 ];
 
