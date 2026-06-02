@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PrintButton from "./print-button";
 
 export const metadata: Metadata = {
   title: "Resume — Ryan Casey",
@@ -22,9 +23,9 @@ const experience = [
     ],
   },
   {
-    company: "Tin Roof Software / Cognizant Softvision",
+    company: "Cognizant Softvision",
     location: "Atlanta, GA",
-    role: "Senior Software Engineer I",
+    role: "Software Engineer II",
     period: "May 2020 – Nov 2022",
     note: "Embedded consultant on Intuit Mailchimp's Dotcom team; hired FTE Nov 2022",
     bullets: [
@@ -36,7 +37,7 @@ const experience = [
   {
     company: "NCR Corporation (via Tin Roof Software)",
     location: "Atlanta, GA",
-    role: "Software Engineer II",
+    role: "Software Engineer I",
     period: "March 2019 – May 2020",
     bullets: [
       "Built features on NCR's React/Node.js online ordering platform, used by major retail brands",
@@ -73,7 +74,7 @@ const projects = [
   },
   {
     name: "AI Engineering Workflow",
-    period: "2026",
+    period: "Mailchimp, 2026",
     description: "Identified workflow bottlenecks and shipped 15 AI-powered tools spanning Jira, GitHub, Slack, and Google Calendar; led a multi-PR initiative to abstract 5 as configurable, team-agnostic tools and ship them into Mailchimp's shared org-installer for cross-team adoption.",
   },
 ];
@@ -85,13 +86,16 @@ const education = [
 
 export default function Resume() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-20">
+    <div className="max-w-4xl mx-auto px-6 py-20 print:py-2">
 
       {/* Header */}
-      <div className="mb-16 pb-10 border-b border-[var(--color-border)]">
-        <h1 className="font-[family-name:var(--font-display)] text-6xl font-light text-[var(--color-text)] mb-6">
-          Ryan Casey
-        </h1>
+      <div className="mb-16 pb-10 print:mb-4 print:pb-4 border-b border-[var(--color-border)]">
+        <div className="flex items-start justify-between mb-6 print:mb-2">
+          <h1 className="font-[family-name:var(--font-display)] text-6xl font-light text-[var(--color-text)] print:text-4xl">
+            Ryan Casey
+          </h1>
+          <PrintButton />
+        </div>
         <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-[var(--color-text-muted)]">
           <span>rcaseyx@gmail.com</span>
           <span>770-402-8881</span>
@@ -104,22 +108,33 @@ export default function Resume() {
           >
             LinkedIn
           </a>
+          <a
+            href="https://github.com/rcaseyx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--color-text)] transition-colors"
+          >
+            GitHub
+          </a>
         </div>
+        <p className="mt-5 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-2xl">
+          Senior frontend/fullstack engineer with 6+ years of experience. Specializes in React/TypeScript, shipping polished products at scale, and building tooling that engineering teams adopt.
+        </p>
       </div>
 
       {/* Experience */}
-      <section className="mb-16">
-        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 uppercase tracking-widest">
+      <section className="mb-16 print:mb-4">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 print:mb-3 uppercase tracking-widest">
           Experience
         </h2>
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-12 print:gap-4">
           {experience.map((job) => (
             <div key={job.company}>
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1 print:mb-0">
                 <span className="font-medium text-[var(--color-text)]">{job.company}</span>
                 <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-widest">{job.location}</span>
               </div>
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3 print:mb-1">
                 <span className="text-sm text-[var(--color-text-muted)]">{job.role}</span>
                 <span className="text-xs text-[var(--color-text-muted)]">{job.period}</span>
               </div>
@@ -127,9 +142,9 @@ export default function Resume() {
                 <p className="text-xs italic text-[var(--color-text-muted)] mb-3">{job.note}</p>
               )}
               {job.bullets.length > 0 && (
-                <ul className="flex flex-col gap-2">
+                <ul className="list-disc pl-5 space-y-1.5 print:space-y-0.5">
                   {job.bullets.map((b, i) => (
-                    <li key={i} className="text-sm text-[var(--color-text-muted)] leading-relaxed pl-4 border-l border-[var(--color-border)]">
+                    <li key={i} className="text-sm text-[var(--color-text)] leading-relaxed">
                       {b}
                     </li>
                   ))}
@@ -141,33 +156,42 @@ export default function Resume() {
       </section>
 
       {/* Skills */}
-      <section className="mb-16 pb-16 border-b border-[var(--color-border)]">
-        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 uppercase tracking-widest">
+      <section className="mb-16 pb-16 print:mb-4 print:pb-4 border-b border-[var(--color-border)]">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 print:mb-3 uppercase tracking-widest">
           Skills
         </h2>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 print:gap-2">
           {skills.map((s) => (
-            <div key={s.label} className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-1 sm:gap-6">
-              <span className="text-xs uppercase tracking-widest text-[var(--color-text-muted)] pt-0.5">{s.label}</span>
-              <span className="text-sm text-[var(--color-text-muted)]">{s.items}</span>
+            <div key={s.label} className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-2 sm:gap-6 items-start">
+              <span className="text-xs uppercase tracking-widest text-[var(--color-text-muted)] pt-1">{s.label}</span>
+              <div className="flex flex-wrap gap-1.5">
+                {s.items.split(' · ').map((item) => (
+                  <span
+                    key={item}
+                    className="text-xs px-2 py-0.5 rounded-sm bg-[var(--color-bg-raised)] text-[var(--color-text-muted)] border border-[var(--color-border)]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Key Projects */}
-      <section className="mb-16 pb-16 border-b border-[var(--color-border)]">
-        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 uppercase tracking-widest">
+      <section className="mb-16 pb-16 print:mb-4 print:pb-4 border-b border-[var(--color-border)]">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 print:mb-3 uppercase tracking-widest">
           Key Projects
         </h2>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 print:gap-4">
           {projects.map((p) => (
             <div key={p.name}>
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2 print:mb-1">
                 <span className="font-medium text-[var(--color-text)]">{p.name}</span>
                 <span className="text-xs text-[var(--color-text-muted)]">{p.period}</span>
               </div>
-              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed pl-4 border-l border-[var(--color-border)]">
+              <p className="text-sm text-[var(--color-text)] leading-relaxed pl-4 border-l border-[var(--color-border)]">
                 {p.description}
               </p>
             </div>
@@ -177,10 +201,10 @@ export default function Resume() {
 
       {/* Education */}
       <section>
-        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 uppercase tracking-widest">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)] mb-10 print:mb-3 uppercase tracking-widest">
           Education
         </h2>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 print:gap-2">
           {education.map((e) => (
             <div key={e.school} className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-1 sm:gap-6">
               <span className="font-medium text-[var(--color-text)]">{e.school}</span>
