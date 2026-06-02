@@ -4,6 +4,7 @@ import { getImagesFromFolder } from "@/lib/cloudinary";
 
 export const metadata: Metadata = {
   title: "Design — Ryan Casey",
+  description: "Design work by Ryan Casey.",
 };
 
 export default async function Design() {

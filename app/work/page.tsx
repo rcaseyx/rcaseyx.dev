@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Work — Ryan Casey",
+  description: "Projects and professional work by Ryan Casey — senior frontend/fullstack engineer based in Atlanta.",
 };
 
 interface Project {
