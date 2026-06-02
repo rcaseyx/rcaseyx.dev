@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Gallery from "@/components/gallery";
 import { getImagesFromFolder } from "@/lib/cloudinary";
 
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Photos — Ryan Casey",
   description: "Photography by Ryan Casey.",
