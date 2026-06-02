@@ -11,12 +11,14 @@ interface Project {
   stack: string[];
   links?: { label: string; href: string }[];
   gif?: string;
+  video?: string;
   noGif?: boolean;
 }
 
 const personal: Project[] = [
   {
     name: "filmprint",
+    video: "filmprint_demo3_wa3cml",
     description:
       "A movie recommendation engine built around your Letterboxd history. Syncs your ratings and watchlist, builds a taste profile from genre affinity, keyword clusters, and critic alignment, then ranks your watchlist by predicted enjoyment. Built end-to-end — data pipeline, ML inference, and web app.",
     stack: ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "Redis", "ONNX"],
@@ -33,21 +35,21 @@ const professional: Project[] = [
     description:
       "Built mailchimp.com's first personalization system for prospective visitors. Captures preferences on first visit and immediately updates homepage content client-side — loading only what each visitor actually sees. Still running in production.",
     stack: ["TypeScript", "React", "PHP", "Contentful"],
-    gif: "work/personalization",
-  },
-  {
-    name: "Interactive Product Demo",
-    description:
-      "Led a 3-engineer team building a React module that walks prospective customers through creating a live email campaign in real time. Shipped to mailchimp.com and drove $280K+ in incremental annual booking revenue.",
-    stack: ["TypeScript", "React", "PHP", "Contentful"],
-    gif: "work/demo",
+    video: "pzn_demo2_sbssnu",
   },
   {
     name: "Homepage Redesign",
     description:
       "Led engineering on a 14-module redesign of mailchimp.com's homepage. Coordinated across marketing, product, and design to phase overlapping A/B tests so the data stayed clean without slowing the launch timeline.",
     stack: ["TypeScript", "React", "PHP", "Contentful"],
-    gif: "work/redesign",
+    video: "hp_redesign_ebsoct",
+  },
+  {
+    name: "Interactive Product Demo",
+    description:
+      "Led a 3-engineer team building a React module that walks prospective customers through creating a live email campaign in real time. Shipped to mailchimp.com and drove $280K+ in incremental annual booking revenue.",
+    stack: ["TypeScript", "React", "PHP", "Contentful"],
+    video: "product_demo_demo_b4qnxu",
   },
 ];
 
@@ -57,8 +59,31 @@ function gifUrl(publicId: string): string {
   return `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto/${publicId}`;
 }
 
-function GifSlot({ gif, noGif }: { gif?: string; noGif?: boolean }) {
+function videoUrl(publicId: string): string {
+  return `https://res.cloudinary.com/${CLOUD}/video/upload/q_auto/${publicId}.mp4`;
+}
+
+function videoPosterUrl(publicId: string): string {
+  return `https://res.cloudinary.com/${CLOUD}/video/upload/q_auto,so_auto/${publicId}.jpg`;
+}
+
+function GifSlot({ gif, video, noGif }: { gif?: string; video?: string; noGif?: boolean }) {
   if (noGif) return null;
+  if (video) {
+    return (
+      <div className="w-full overflow-hidden mb-6">
+        <video
+          controls
+          muted
+          playsInline
+          poster={videoPosterUrl(video)}
+          className="w-full"
+        >
+          <source src={videoUrl(video)} type="video/mp4" />
+        </video>
+      </div>
+    );
+  }
   if (gif) {
     return (
       <div className="w-full aspect-video overflow-hidden mb-6">
@@ -69,7 +94,7 @@ function GifSlot({ gif, noGif }: { gif?: string; noGif?: boolean }) {
   return (
     <div className="w-full aspect-video bg-[var(--color-bg-raised)] border border-[var(--color-border)] flex items-center justify-center mb-6">
       <span className="text-xs uppercase tracking-widest text-[var(--color-text-muted)]">
-        GIF coming soon
+        Coming soon
       </span>
     </div>
   );
@@ -78,7 +103,7 @@ function GifSlot({ gif, noGif }: { gif?: string; noGif?: boolean }) {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="border-t border-[var(--color-border)] pt-10">
-      <GifSlot gif={project.gif} noGif={project.noGif} />
+      <GifSlot gif={project.gif} video={project.video} noGif={project.noGif} />
       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-4">
         <h3 className="font-[family-name:var(--font-display)] text-3xl font-light text-[var(--color-text)]">
           {project.name}
