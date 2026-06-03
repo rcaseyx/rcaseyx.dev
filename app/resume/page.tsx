@@ -86,7 +86,7 @@ const education = [
 
 export default function Resume() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-20 print:py-2">
+    <div className="animate-card-in max-w-4xl mx-auto px-6 py-20 print:py-2" style={{ animationDelay: "100ms" }}>
 
       {/* Header */}
       <div className="mb-16 pb-10 print:mb-4 print:pb-4 border-b border-[var(--color-border)]">

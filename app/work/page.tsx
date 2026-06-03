@@ -144,7 +144,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function Work() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-20">
+    <div className="animate-card-in max-w-4xl mx-auto px-6 py-20" style={{ animationDelay: "100ms" }}>
 
       <section className="mb-24">
         <h2 className="font-[family-name:var(--font-display)] text-5xl font-light text-[var(--color-text)] mb-16">
