@@ -10,6 +10,7 @@ const links = [
   { href: "/photos", label: "Photos" },
   { href: "/music", label: "Music" },
   { href: "/resume", label: "Resume" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -21,9 +22,10 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="font-[family-name:var(--font-display)] text-xl font-light tracking-wide text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
+          className="relative group font-[family-name:var(--font-display)] text-xl font-light tracking-wide text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
         >
           Ryan Casey
+          <span className="absolute -bottom-0.5 left-0 h-px w-full bg-[var(--color-accent)] scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
         </Link>
 
         {/* Desktop nav */}
@@ -32,13 +34,14 @@ export default function Nav() {
             <Link
               key={href}
               href={href}
-              className={`text-xs uppercase tracking-[0.15em] transition-colors ${
+              className={`relative group text-xs uppercase tracking-[0.15em] transition-colors ${
                 pathname.startsWith(href)
                   ? "text-[var(--color-accent)]"
                   : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
               }`}
             >
               {label}
+              <span className="absolute -bottom-0.5 left-0 h-px w-full bg-[var(--color-accent)] scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
           ))}
         </nav>
@@ -64,13 +67,14 @@ export default function Nav() {
                 key={href}
                 href={href}
                 onClick={() => setMenuOpen(false)}
-                className={`text-xs uppercase tracking-[0.15em] transition-colors ${
+                className={`relative group text-xs uppercase tracking-[0.15em] transition-colors w-fit ${
                   pathname.startsWith(href)
                     ? "text-[var(--color-accent)]"
-                  : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                    : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
                 }`}
               >
                 {label}
+                <span className="absolute -bottom-0.5 left-0 h-px w-full bg-[var(--color-accent)] scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
