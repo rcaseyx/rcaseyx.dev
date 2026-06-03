@@ -77,14 +77,6 @@ function FeaturedReleaseCard({ release, delay = 0 }: { release: FeaturedRelease;
 
   return (
     <div className="animate-card-in bg-[var(--color-bg-raised)] overflow-hidden flex flex-col sm:flex-row" style={{ animationDelay: `${delay}ms` }}>
-      <div className="shrink-0">
-        <iframe
-          src={release.embedSrc}
-          seamless
-          style={{ border: 0 }}
-          className="w-[350px] h-[470px] block"
-        />
-      </div>
       {photoUrl ? (
         <div className="relative flex-1 min-h-[260px] sm:min-h-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -132,6 +124,14 @@ function FeaturedReleaseCard({ release, delay = 0 }: { release: FeaturedRelease;
           </Link>
         </div>
       )}
+      <div className="w-full sm:w-[350px] sm:shrink-0">
+        <iframe
+          src={release.embedSrc}
+          seamless
+          style={{ border: 0 }}
+          className="w-full sm:w-[350px] h-[470px] block"
+        />
+      </div>
     </div>
   );
 }
@@ -150,7 +150,7 @@ function CompactReleaseCard({ release, delay = 0 }: { release: CompactRelease; d
         src={release.embedSrc}
         seamless
         style={{ border: 0 }}
-        className="w-[350px] h-[470px] block mx-auto"
+        className="w-full sm:w-[350px] h-[470px] block sm:mx-auto"
       />
       {release.note && (
         <p className="text-xs text-[var(--color-text-muted)] italic">
