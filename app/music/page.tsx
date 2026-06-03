@@ -70,13 +70,13 @@ const engineerCredits: CompactRelease[] = [
   },
 ];
 
-function FeaturedReleaseCard({ release }: { release: FeaturedRelease }) {
+function FeaturedReleaseCard({ release, delay = 0 }: { release: FeaturedRelease; delay?: number }) {
   const photoUrl = release.photo
     ? `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto,w_900/${release.photo}`
     : null;
 
   return (
-    <div className="bg-[var(--color-bg-raised)] overflow-hidden flex flex-col sm:flex-row">
+    <div className="animate-card-in bg-[var(--color-bg-raised)] overflow-hidden flex flex-col sm:flex-row" style={{ animationDelay: `${delay}ms` }}>
       <div className="shrink-0">
         <iframe
           src={release.embedSrc}
@@ -136,9 +136,9 @@ function FeaturedReleaseCard({ release }: { release: FeaturedRelease }) {
   );
 }
 
-function CompactReleaseCard({ release }: { release: CompactRelease }) {
+function CompactReleaseCard({ release, delay = 0 }: { release: CompactRelease; delay?: number }) {
   return (
-    <div className="bg-[var(--color-bg-raised)] p-5 flex flex-col gap-4">
+    <div className="animate-card-in bg-[var(--color-bg-raised)] p-5 flex flex-col gap-4" style={{ animationDelay: `${delay}ms` }}>
       <p className="text-xs uppercase tracking-[0.15em] text-[var(--color-text-muted)]">
         {release.artist}
         {release.context && (
@@ -176,11 +176,11 @@ function Section({
         {title}
       </h2>
       <div className="flex flex-col gap-4">
-        {featured && <FeaturedReleaseCard release={featured} />}
+        {featured && <FeaturedReleaseCard release={featured} delay={350} />}
         {compact.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {compact.map((r) => (
-              <CompactReleaseCard key={`${r.artist}-${r.context ?? ""}`} release={r} />
+            {compact.map((r, i) => (
+              <CompactReleaseCard key={`${r.artist}-${r.context ?? ""}`} release={r} delay={(featured ? 500 : 0) + i * 100} />
             ))}
           </div>
         )}
