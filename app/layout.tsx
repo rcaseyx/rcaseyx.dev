@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+import PageWrapper from "@/components/page-wrapper";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -35,7 +36,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col antialiased">
         <Nav />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PageWrapper>{children}</PageWrapper>
+        </main>
         <Footer />
       </body>
     </html>
